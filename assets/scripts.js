@@ -1,50 +1,97 @@
 /* Five One Nine Marketing - Shared Scripts */
+/* Safari-hardened, premium section animations */
 
 // ─── Init ───
 lucide.createIcons();
 gsap.registerPlugin(ScrollTrigger);
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+const isMobile = window.innerWidth < 768;
 
-// ─── Section Reveal (GSAP) ───
-if (!prefersReducedMotion) {
-  gsap.utils.toArray('.ds-reveal').forEach(el => {
-    ScrollTrigger.create({
-      trigger: el, start: 'top 88%', once: true,
-      onEnter: () => gsap.to(el, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' })
-    });
-  });
-  gsap.utils.toArray('.stagger-grid').forEach(grid => {
-    ScrollTrigger.create({
-      trigger: grid, start: 'top 88%', once: true,
-      onEnter: () => gsap.to(grid.children, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1 })
-    });
-  });
-} else {
+// Safari fix: refresh ScrollTrigger after full page load (images, fonts, etc.)
+window.addEventListener('load', () => {
+  ScrollTrigger.refresh(true);
+});
+
+// ─── Reduced Motion: show everything immediately ───
+if (prefersReducedMotion) {
   document.querySelectorAll('.ds-reveal, .stagger-grid > *, .hero-el, .hero-word, .hero-stat, .narrative-p').forEach(el => {
-    el.style.opacity = '1'; el.style.transform = 'none';
+    el.style.opacity = '1';
+    el.style.transform = 'none';
   });
 }
 
-// Safety fallback
-setTimeout(() => {
-  document.querySelectorAll('.ds-reveal, .stagger-grid > *, .narrative-p').forEach(el => {
-    if (getComputedStyle(el).opacity === '0') { el.style.opacity = '1'; el.style.transform = 'none'; }
-  });
-}, 4000);
+// ─── Section Reveal (premium entrance) ───
+if (!prefersReducedMotion) {
+  gsap.utils.toArray('.ds-reveal').forEach(section => {
+    const eyebrow = section.querySelector('.eyebrow');
+    const heading = section.querySelector('h2');
+    const subtext = section.querySelector('h2 + p');
+    const children = [eyebrow, heading, subtext].filter(Boolean);
 
-// ─── Narrative Flow (paragraph-by-paragraph reveal) ───
+    ScrollTrigger.create({
+      trigger: section,
+      start: isMobile ? 'top 92%' : 'top 85%',
+      once: true,
+      onEnter: () => {
+        // Section container fades in
+        gsap.to(section, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+        // Heading group staggers in with slight delay
+        if (children.length > 0) {
+          gsap.fromTo(children,
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.12, delay: 0.15 }
+          );
+        }
+      }
+    });
+  });
+
+  // Card stagger
+  gsap.utils.toArray('.stagger-grid').forEach(grid => {
+    ScrollTrigger.create({
+      trigger: grid,
+      start: isMobile ? 'top 92%' : 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.to(grid.children, {
+          opacity: 1, y: 0, duration: 0.5, ease: 'power3.out',
+          stagger: isMobile ? 0.08 : 0.1
+        });
+      }
+    });
+  });
+}
+
+// ─── Safety fallback (Safari + slow connections) ───
+// Short timeout to catch any elements ScrollTrigger missed
+function forceShowHidden() {
+  document.querySelectorAll('.ds-reveal, .stagger-grid > *, .narrative-p, .hero-el, .hero-word, .hero-stat').forEach(el => {
+    if (parseFloat(getComputedStyle(el).opacity) < 0.1) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.transition = 'none';
+    }
+  });
+}
+setTimeout(forceShowHidden, 2500);
+// Extra fallback on load event for Safari which fires scroll events late
+window.addEventListener('load', () => setTimeout(forceShowHidden, 1500));
+
+// ─── Narrative Flow (paragraph stagger) ───
 if (!prefersReducedMotion) {
   document.querySelectorAll('.narrative-p').forEach(p => {
-    gsap.set(p, { opacity: 0, y: 20 });
+    gsap.set(p, { opacity: 0, y: 16 });
   });
   document.querySelectorAll('.narrative-flow').forEach(flow => {
     const paragraphs = flow.querySelectorAll('.narrative-p');
     ScrollTrigger.create({
-      trigger: flow, start: 'top 80%', once: true,
+      trigger: flow,
+      start: isMobile ? 'top 90%' : 'top 78%',
+      once: true,
       onEnter: () => {
         gsap.to(paragraphs, {
-          opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
-          stagger: 0.25
+          opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.2
         });
       }
     });
@@ -54,24 +101,32 @@ if (!prefersReducedMotion) {
 // ─── Stat Counter ───
 document.querySelectorAll('[data-stats]').forEach(statsBar => {
   ScrollTrigger.create({
-    trigger: statsBar, start: 'top 80%', once: true,
+    trigger: statsBar,
+    start: isMobile ? 'top 90%' : 'top 80%',
+    once: true,
     onEnter: () => {
       statsBar.querySelectorAll('.stat-num').forEach(el => {
         const target = parseFloat(el.dataset.target);
         const decimals = parseInt(el.dataset.decimals) || 0;
         const prefix = el.dataset.prefix || '';
         const suffix = el.dataset.suffix || '';
-        if (prefersReducedMotion) { el.textContent = prefix + (decimals ? target.toFixed(decimals) : target) + suffix; return; }
+        if (prefersReducedMotion) {
+          el.textContent = prefix + (decimals ? target.toFixed(decimals) : target) + suffix;
+          return;
+        }
         const obj = { val: 0 };
-        gsap.to(obj, { val: target, duration: 2, ease: 'power2.out', onUpdate: () => {
-          el.textContent = prefix + (decimals ? obj.val.toFixed(decimals) : Math.round(obj.val)) + suffix;
-        }});
+        gsap.to(obj, {
+          val: target, duration: 1.8, ease: 'power2.out',
+          onUpdate: () => {
+            el.textContent = prefix + (decimals ? obj.val.toFixed(decimals) : Math.round(obj.val)) + suffix;
+          }
+        });
       });
     }
   });
 });
 
-// ─── RoughNotation (general - skips hero annotations) ───
+// ─── RoughNotation (general annotations - scroll triggered) ───
 const annotationConfigs = {
   circle:    { type: 'circle', color: '#F57F5B', strokeWidth: 2, padding: 8, animationDuration: 1200 },
   underline: { type: 'underline', color: '#F57F5B', strokeWidth: 3, padding: 2, animationDuration: 800 },
@@ -88,12 +143,14 @@ document.querySelectorAll('[data-annotate]').forEach(el => {
   annotations.push({ annotation: a, element: el });
   if (prefersReducedMotion) { a.show(); return; }
   ScrollTrigger.create({
-    trigger: el, start: 'top 75%', once: true,
-    onEnter: () => { setTimeout(() => a.show(), 300); }
+    trigger: el,
+    start: isMobile ? 'top 85%' : 'top 75%',
+    once: true,
+    onEnter: () => { setTimeout(() => a.show(), 400); }
   });
 });
 
-// ─── Hero Annotation (separate from general - fires from GSAP timeline only) ───
+// ─── Hero Annotation (fires from GSAP timeline, not scroll) ───
 let heroAnnotation = null;
 const heroEmphasis = document.getElementById('hero-emphasis');
 if (heroEmphasis) {
@@ -124,47 +181,55 @@ if (closeBtn && mobileMenu) {
 
 // ─── Hero Entrance (home page only) ───
 function initHeroEntrance() {
+  const heroEls = document.querySelectorAll('.hero-el');
+  const heroWords = document.querySelectorAll('.hero-word');
+  const heroStat = document.querySelector('.hero-stat');
+
   if (prefersReducedMotion) {
-    document.querySelectorAll('.hero-el, .hero-word, .hero-stat').forEach(el => {
-      el.style.opacity = '1'; el.style.transform = 'none';
-    });
+    heroEls.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    heroWords.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    if (heroStat) { heroStat.style.opacity = '1'; heroStat.style.transform = 'none'; }
     if (heroAnnotation) heroAnnotation.show();
     return;
   }
 
   const tl = gsap.timeline();
   gsap.set('.hero-el, .hero-word', { opacity: 0, y: 12 });
-  gsap.set('.hero-stat', { opacity: 0, scale: 0.95 });
+  if (heroStat) gsap.set(heroStat, { opacity: 0, scale: 0.95 });
 
   // Eyebrow
-  const heroEls = document.querySelectorAll('.hero-el');
-  if (heroEls[0]) tl.to(heroEls[0], { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, 0.2);
+  if (heroEls[0]) tl.to(heroEls[0], { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 0.15);
 
-  // Headline words (one by one)
-  document.querySelectorAll('.hero-word').forEach((word, i) => {
-    tl.to(word, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, 0.5 + i * 0.15);
+  // Headline words
+  heroWords.forEach((word, i) => {
+    tl.to(word, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }, 0.4 + i * 0.12);
   });
 
-  // RoughNotation circle on emphasis word AFTER all words are visible
+  // Annotation after words
   if (heroAnnotation) {
-    tl.call(() => heroAnnotation.show(), null, 1.4);
+    tl.call(() => heroAnnotation.show(), null, 1.3);
   }
 
   // Subheadline
-  if (heroEls[1]) tl.to(heroEls[1], { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, 1.6);
+  if (heroEls[1]) tl.to(heroEls[1], { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 1.5);
 
   // CTAs
-  if (heroEls[2]) tl.to(heroEls[2], { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, 2.0);
+  if (heroEls[2]) tl.to(heroEls[2], { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 1.9);
 
   // Trust bar
-  if (heroEls[3]) tl.to(heroEls[3], { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, 2.4);
+  if (heroEls[3]) tl.to(heroEls[3], { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 2.2);
 
-  // Stat card
-  tl.to('.hero-stat', { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out' }, 0.6);
+  // Stat card / right composition
+  if (heroStat) tl.to(heroStat, { opacity: 1, scale: 1, duration: 0.7, ease: 'power3.out' }, 0.5);
 }
 
 if (document.querySelector('.hero-word')) {
-  setTimeout(initHeroEntrance, 200);
+  // Use requestAnimationFrame to ensure DOM is painted before animating
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      initHeroEntrance();
+    });
+  });
 }
 
 // ─── Navbar scroll effect ───
@@ -182,4 +247,5 @@ if (navbar) {
   });
 }
 
-ScrollTrigger.refresh();
+// Final refresh after everything is set up
+requestAnimationFrame(() => ScrollTrigger.refresh(true));
