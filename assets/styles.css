@@ -19,8 +19,8 @@ p { text-wrap: pretty; }
 /* Logo invert for dark backgrounds */
 .logo-light { filter: brightness(0) invert(1); }
 
-/* Eyebrow dot prefix */
-.eyebrow::before { content: ''; display: inline-block; width: 6px; height: 6px; background: #F57F5B; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+/* Eyebrow pill style */
+.eyebrow { display: inline-block; background: rgba(203, 225, 232, 0.3); padding: 4px 14px; border-radius: 50px; }
 
 /* Social brand icons */
 .social-icon { display: inline-flex; align-items: center; justify-content: center; }
