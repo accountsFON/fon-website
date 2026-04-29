@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Five One Nine Marketing | Strategy-First Digital Marketing Agency</title>
+  <meta name="description" content="Five One Nine partners with growth-focused businesses to build marketing systems that actually work. Strategy, ads, web, SEO, automation. No random acts of marketing.">
+  <meta property="og:title" content="Five One Nine Marketing | Strategy-First Digital Marketing Agency">
+  <meta property="og:description" content="Clear strategy. Real growth. A partner who gets it. We build marketing systems that compound over time.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="./assets/styles.css">
+
+  <!-- Tailwind CDN + Shared Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./assets/tailwind.config.js"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- RoughNotation -->
+  <script src="https://unpkg.com/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
+
+  <style>
+    #navbar { transition: background 300ms ease, backdrop-filter 300ms ease, padding 300ms ease; }
+    .nav-scrolled { background: rgba(248,248,248,0.92) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #E2E5E8; }
+  </style>
+</head>
+<body class="font-body text-text-primary bg-background-primary">
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1: NAVBAR -->
+  <!-- ============================================================ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent py-4 px-6">
+    <div class="max-w-container mx-auto flex items-center justify-between">
+      <a href="./index.html">
+        <img src="./assets/images/fon-logo-full-dark.png" alt="Five One Nine Digital Marketing" class="h-10 md:h-14">
+      </a>
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="./index.html" class="rounded-pill bg-brand-secondary text-white px-5 py-2 text-sm font-body font-medium" aria-current="page">Home</a>
+        <a href="./services.html" class="rounded-pill border border-brand-secondary-light px-5 py-2 text-sm font-body font-medium text-text-primary hover:bg-brand-secondary-light transition-all duration-200">Services</a>
+        <a href="./case-studies.html" class="rounded-pill border border-brand-secondary-light px-5 py-2 text-sm font-body font-medium text-text-primary hover:bg-brand-secondary-light transition-all duration-200">Case Studies</a>
+        <a href="./resources.html" class="rounded-pill border border-brand-secondary-light px-5 py-2 text-sm font-body font-medium text-text-primary hover:bg-brand-secondary-light transition-all duration-200">Resources</a>
+        <a href="./about.html" class="rounded-pill border border-brand-secondary-light px-5 py-2 text-sm font-body font-medium text-text-primary hover:bg-brand-secondary-light transition-all duration-200">About</a>
+        <a href="./contact.html" class="rounded-pill bg-brand-primary text-white px-6 py-2 text-sm font-body font-semibold hover:bg-brand-primary-dark transition-all duration-200 ml-2">Get Started</a>
+      </div>
+      <!-- Mobile Hamburger -->
+      <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-text-primary" aria-label="Open menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="mobile-menu fixed inset-0 z-[60] bg-background-alternative">
+    <div class="px-6 py-4 flex items-center justify-between border-b border-white/10">
+      <img src="./assets/images/fon-logo-full-dark.png" alt="Five One Nine" class="h-10 logo-light">
+      <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center text-text-alternative" aria-label="Close menu">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <div class="p-8 space-y-5">
+      <a href="./index.html" class="block font-body text-xl font-medium text-text-alternative">Home</a>
+      <a href="./services.html" class="block font-body text-xl font-medium text-text-alternative">Services</a>
+      <a href="./case-studies.html" class="block font-body text-xl font-medium text-text-alternative">Case Studies</a>
+      <a href="./resources.html" class="block font-body text-xl font-medium text-text-alternative">Resources</a>
+      <a href="./about.html" class="block font-body text-xl font-medium text-text-alternative">About</a>
+      <a href="./team.html" class="block font-body text-xl font-medium text-text-alternative">Our Team</a>
+      <button class="w-full bg-brand-primary text-white font-body font-semibold text-base px-8 py-4 rounded-pill mt-6 hover:bg-brand-primary-dark transition-all duration-200">Get Started</button>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: HERO -->
+    <!-- ============================================================ -->
+    <section class="bg-background-primary pt-32 pb-20 px-6">
+      <div class="max-w-container mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="eyebrow text-[10px] font-body font-bold tracking-[0.12em] uppercase text-text-secondary mb-5 hero-el">Digital Marketing Agency</p>
+            <h1 class="font-body text-4xl md:text-[52px] font-bold text-text-primary leading-[1.08] mb-6">
+              <span class="hero-word">Stop </span><span class="hero-word">Guessing.</span><br>
+              <span class="hero-word">Start </span><span class="font-heading italic text-brand-primary hero-word" id="hero-emphasis" data-hero-annotate="circle">Growing.</span>
+            </h1>
+            <p class="font-body text-lg text-text-secondary leading-[1.65] mb-8 max-w-[500px] hero-el">
+              Five One Nine partners with growth-focused businesses to build marketing systems that actually work. No random acts. No vanity metrics. Just real, trackable&nbsp;growth.
+            </p>
+            <div class="flex flex-wrap items-center gap-4 mb-10 hero-el">
+              <a href="./contact.html" class="bg-brand-primary hover:bg-brand-primary-dark text-white font-body font-semibold text-sm px-8 py-3.5 rounded-pill transition-all duration-200 hover:scale-[1.02] hover:shadow-card-hover inline-flex items-center gap-2">
+                <i data-lucide="calendar" class="w-4 h-4"></i> Book a Discovery Call
+              </a>
+              <a href="#case-studies" class="bg-transparent border-2 border-brand-secondary hover:bg-brand-secondary-light text-text-primary font-body font-semibold text-sm px-8 py-3.5 rounded-pill transition-all duration-200 hover:scale-[1.02] inline-flex items-center gap-2">
+                See Our Work <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <!-- Trust Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-border-primary hero-el" data-stats>
+              <div>
+                <p class="font-heading italic text-2xl text-brand-primary stat-num" data-target="50" data-suffix="+">0</p>
+                <p class="font-body text-[10px] font-bold tracking-[0.08em] uppercase text-text-secondary mt-1">Clients Served</p>
+              </div>
+              <div>
+                <p class="font-heading italic text-2xl text-brand-primary stat-num" data-target="7" data-suffix=" Years">0</p>
+                <p class="font-body text-[10px] font-bold tracking-[0.08em] uppercase text-text-secondary mt-1">In Business</p>
+              </div>
+              <div>
+                <p class="font-heading italic text-2xl text-brand-primary stat-num" data-target="247" data-suffix="%">0</p>
+                <p class="font-body text-[10px] font-bold tracking-[0.08em] uppercase text-text-secondary mt-1">Avg. ROI Increase</p>
+              </div>
+              <div>
+                <p class="font-heading italic text-2xl text-brand-primary">Full-Stack</p>
+                <p class="font-body text-[10px] font-bold tracking-[0.08em] uppercase text-text-secondary mt-1">Marketing Partner</p>
+              </div>
+            </div>
+          </div>
+          <!-- Hero Right: Layered Composition -->
+          <div class="relative hero-stat lg:min-h-[520px] overflow-hidden lg:overflow-visible">
+            <!-- Browser Mockup (background layer) -->
+            <div class="hidden lg:block absolute top-0 right-0 w-[420px] rounded-panel overflow-hidden bg-background-secondary border border-border-primary shadow-card">
+              <div class="h-8 bg-border-primary/60 flex items-center px-3 gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-brand-primary/30"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-brand-secondary/30"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-text-secondary/15"></span>
+                <div class="ml-3 h-3.5 w-40 bg-border-primary rounded-full"></div>
+              </div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="h-3 w-28 bg-text-primary/8 rounded"></div>
+                  <div class="flex gap-2"><div class="h-6 w-16 bg-brand-secondary/15 rounded-pill"></div><div class="h-6 w-16 bg-border-primary rounded-pill"></div></div>
+                </div>
+                <div class="grid grid-cols-3 gap-3 mb-4">
+                  <div class="bg-background-primary rounded-card p-3 border border-border-primary"><div class="h-2 w-12 bg-text-secondary/15 rounded mb-2"></div><div class="h-4 w-16 bg-brand-primary/20 rounded"></div></div>
+                  <div class="bg-background-primary rounded-card p-3 border border-border-primary"><div class="h-2 w-12 bg-text-secondary/15 rounded mb-2"></div><div class="h-4 w-14 bg-brand-secondary/20 rounded"></div></div>
+                  <div class="bg-background-primary rounded-card p-3 border border-border-primary"><div class="h-2 w-12 bg-text-secondary/15 rounded mb-2"></div><div class="h-4 w-10 bg-green-500/20 rounded"></div></div>
+                </div>
+                <div class="bg-background-primary rounded-card p-3 border border-border-primary h-24">
+                  <div class="flex items-end justify-between h-full gap-1.5 px-1 pb-1">
+                    <div class="w-full bg-brand-secondary/20 rounded-t" style="height:30%"></div>
+                    <div class="w-full bg-brand-secondary/25 rounded-t" style="height:45%"></div>
+                    <div class="w-full bg-brand-secondary/30 rounded-t" style="height:55%"></div>
+                    <div class="w-full bg-brand-secondary/35 rounded-t" style="height:50%"></div>
+                    <div class="w-full bg-brand-secondary/40 rounded-t" style="height:65%"></div>
+                    <div class="w-full bg-brand-primary/30 rounded-t" style="height:85%"></div>
+                    <div class="w-full bg-brand-primary/40 rounded-t" style="height:95%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stat Card (overlapping foreground) -->
+            <div class="lg:absolute lg:bottom-4 lg:left-0 lg:z-10 w-full lg:max-w-[340px] mx-auto lg:mx-0">
+              <div class="grain-overlay rounded-panel overflow-hidden" style="background:linear-gradient(155deg, #A8CDD7, #8AB3BD)">
+                <div class="p-7 relative z-10">
+                  <p class="font-body text-[10px] font-bold tracking-[0.12em] uppercase text-white/70 mb-2">Featured Result</p>
+                  <p class="font-heading italic text-5xl text-white mb-2">247%</p>
+                  <p class="font-body text-base font-semibold text-white mb-1">ROI Increase</p>
+                  <p class="font-body text-sm text-white/70 mb-5">North Georgia Design Build saw a 247% increase in qualified leads within&nbsp;6&nbsp;months.</p>
+                  <a href="./case-studies.html" class="inline-flex items-center gap-2 font-body text-sm font-semibold text-white hover:text-brand-primary transition-colors">
+                    Read the Case Study <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Google Rating Badge -->
+            <div class="hidden lg:flex absolute top-[200px] -left-4 z-20 bg-background-secondary rounded-card shadow-card-hover border border-border-primary px-4 py-3 items-center gap-3">
+              <div class="flex gap-0.5 text-brand-primary"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+              <div><p class="font-body text-xs font-semibold leading-tight">4.9 on Google</p><p class="font-body text-[10px] text-text-secondary">24 reviews</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: BRAND NARRATIVE -->
+    <!-- ============================================================ -->
+    <section class="bg-background-secondary py-20 px-6">
+      <div class="max-w-[800px] mx-auto text-center">
+        <p class="eyebrow text-[10px] font-body font-bold tracking-[0.12em] uppercase text-text-secondary mb-5 ds-reveal">Our Philosophy</p>
+        <div class="font-body text-[18px] md:text-[20px] leading-[1.75] text-text-primary space-y-6 narrative-flow">
+          <p class="narrative-p">A lot of the businesses we work with are doing everything right. Great product, solid team, real potential. But somewhere between the strategy they need and the tactics they're running, something's breaking down.</p>
+          <p class="narrative-p">They're posting without a plan. Running ads without a funnel. Spending real money without being able to trace it back to real results. That's what we call <span class="font-heading italic text-brand-primary" data-annotate="underline">random acts of marketing.</span></p>
+          <p class="narrative-p font-heading italic text-2xl text-text-secondary">And the harder they try to fix it, the more overwhelming it gets.</p>
+          <p class="narrative-p font-semibold text-[22px]">At Five One Nine, we don't just run your marketing. We build the <span class="font-heading italic text-brand-primary" data-annotate="circle">system</span> behind it.</p>
+          <p class="narrative-p">We start with a clear strategy rooted in your goals, build the assets and infrastructure to execute it, and stay alongside you as a true partner. Our clients don't wonder what their marketing is doing. They see it. They trust it. And they grow because of it.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: WHAT MAKES US DIFFERENT -->
+    <!-- ============================================================ -->
+    <section class="bg-background-primary py-20 px-6 ds-reveal">
+      <div class="max-w-container mx-auto">
+        <div class="text-center mb-12">
+          <p class="eyebrow text-[10px] font-body font-bold tracking-[0.12em] uppercase text-text-secondary mb-4">Why Five One Nine</p>
+          <h2 class="font-body text-3xl md:text-4xl font-bold text-text-primary">What makes us <span class="font-heading italic text-brand-primary">different.</span></h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 stagger-grid">
+          <div class="bg-background-secondary rounded-card p-6 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200">
+            <div class="w-10 h-10 rounded-full bg-brand-secondary-light flex items-center justify-center mb-4 text-brand-secondary-dark"><i data-lucide="target" class="w-5 h-5"></i></div>
+            <h3 class="font-body text-lg font-bold mb-2">Strategy First, Always</h3>
+            <p class="font-body text-sm text-text-secondary leading-[1.6]">We don't jump to tactics. Every engagement starts with a clear strategy built around your goals. The system comes before the ads.</p>
+          </div>
+          <div class="bg-background-secondary rounded-card p-6 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200">
+            <div class="w-10 h-10 rounded-full bg-brand-secondary-light flex items-center justify-center mb-4 text-brand-secondary-dark"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
+            <h3 class="font-body text-lg font-bold mb-2">AI-Powered Operations</h3>
+            <p class="font-body text-sm text-text-secondary leading-[1.6]">Our in-house AI engineering means a small team operates at 10x capacity. You get the efficiency without sacrificing the personal touch.</p>
+          </div>
+          <div class="bg-background-secondary rounded-card p-6 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200">
+            <div class="w-10 h-10 rounded-full bg-brand-secondary-light flex items-center justify-center mb-4 text-brand-secondary-dark"><i data-lucide="layers" class="w-5 h-5"></i></div>
+            <h3 class="font-body text-lg font-bold mb-2">Full Stack, One Team</h3>
+            <p class="font-body text-sm text-text-secondary leading-[1.6]">Strategy, ads, web, social, SEO, automation, branding. No gaps, no handoffs to subcontractors you'll never meet. One team, one system.</p>
+          </div>
+          <div class="bg-background-secondary rounded-card p-6 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200">
+            <div class="w-10 h-10 rounded-full bg-brand-secondary-light flex items-center justify-center mb-4 text-brand-secondary-dark"><i data-lucide="users" class="w-5 h-5"></i></div>
+            <h3 class="font-body text-lg font-bold mb-2">Partners, Not Vendors</h3>
+            <p class="font-body text-sm text-text-secondary leading-[1.6]">We're not here for a 3-month project. We invest in understanding your business deeply and stay alongside you as growth compounds.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: SERVICES GRID -->
+    <!-- ============================================================ -->
+    <section class="bg-background-secondary py-20 px-6 ds-reveal">
+      <div class="max-w-container mx-auto">
+        <div class="text-center mb-12">
+          <p class="eyebrow text-[10px] font-body font-bold tracking-[0.12em] uppercase text-text-secondary mb-4">What We Do</p>
+          <h2 class="font-body text-3xl md:text-4xl font-bold text-text-primary mb-4">Everything you need, under <span class="font-heading italic text-brand-primary">one roof.</span></h2>
+          <p class="font-body text-lg text-text-secondary max-w-prose mx-auto">These aren't services you buy. They're capabilities you unlock through a strategic&nbsp;partnership.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 stagger-grid">
+          <a href="./services/marketing-strategy.html" class="bg-background-primary rounded-card overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 group">
+            <div class="h-[140px] overflow-hidden"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&auto=format" alt="Team collaborating on marketing strategy around a whiteboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+            <div class="p-5">
+              <div class="text-brand-primary mb-3"><i data-lucide="target" class="w-5 h-5"></i></div>
+              <h3 class="font-body text-base font-bold mb-1 group-hover:text-brand-primary transition-colors">Marketing Strategy</h3>
+              <p class="font-body text-sm text-text-secondary leading-[1.6]">A clear plan built around your goals, not a template.</p>
+            </div>
+          </a>
+          <a href="./services/paid-advertising.html" class="bg-background-primary rounded-card overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 group">
+            <div class="h-[140px] overflow-hidden"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format" alt="Marketing analytics dashboard showing campaign performance metrics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+            <div class="p-5">
+              <div class="text-brand-primary mb-3"><i data-lucide="megaphone" class="w-5 h-5"></i></div>
+              <h3 class="font-body text-base font-bold mb-1 group-hover:text-brand-primary transition-colors">Paid Advertising</h3>
+              <p class="font-body text-sm text-text-secondary leading-[1.6]">Every dollar tracked, every lead traced, every campaign optimized.</p>
+            </div>
+          </a>
+          <a href="./services/web-design.html" class="bg-background-primary rounded-card overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 group">
+            <div class="h-[140px] overflow-hidden"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80&auto=format" alt="Modern responsive website design displayed on desktop monitor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+            <div class="p-5">
+              <div class="text-brand-primary mb-3"><i data-lucide="layout" class="w-5 h-5"></i></div>
+              <h3 class="font-body text-base font-bold mb-1 group-hover:text-brand-primary transition-colors">Web Design & Dev</h3>
+              <p class="font-body text-sm text-text-secondary leading-[1.6]">A site that converts visitors into customers, not just impressions.</p>
+            </div>
+          </a>
+          <a href="./services/seo.html" class="bg-background-primary rounded-card overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 group">
+            <div class="h-[140px] overflow-hidden"><img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80&auto=format" alt="Search engine results page showing top organic rankings" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+            <div class="p-5">
+              <div class="text-brand-primary mb-3"><i data-lucide="globe" class="w-5 h-5"></i></div>
+              <h3 class="font-body text-base font-bold mb-1 group-hover:text-brand-primary transition-colors">SEO</h3>
+              <p class="font-body text-sm text-text-secondary leading-[1.6]">Be found by the people already looking for what you do.</p>
+            </div>
+          </a>
+          <a href="./services/social-media.html" class="bg-background-primary rounded-card overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 group">
+            <div class="h-[140px] overflow-hidden"><img src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=600&q=80&auto=format" alt="Social media analytics and content planning on mobile device" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+            <div class="p-5">
+              <div class="text-brand-primary mb-3"><i data-lucide="share-2" class="w-5 h-5"></i></div>
+              <h3 class="font-body text-base font-bold mb-1 group-hover:text-brand-primary transition-colors">Social Media</h3>
+              <p class="font-body text-sm text-text-secondary leading-[1.6]">Consistent, strategic presence without the content hamster wheel.</p>
+            </div>
+          </a>
+          <a href="./services/lead-systems.html" class="bg-background-primary rounded-card overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 group">
+            <div class="h-[140px] overflow-hidden"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format" alt="CRM dashboard showing automated lead pipeline and conversion funnel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+            <div class="p-5">
+              <div class="text-brand-primary mb-3"><i data-lucide="zap" class="w-5 h-5"></i></div>
+              <h3 class="font-body text-base font-bold mb-1 group-hover:text-brand-primary transition-colors">Lead Systems & CRM</h3>
+              <p class="font-body text-sm text-text-secondary leading-[1.6]">Capture, nurture, and convert leads without dropping a single one.</p>
+            </div>
+          </a>
+          <a href="./services/branding.html" class="bg-background-primary rounded-card overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 group">
+            <div class="h-[140px] overflow-hidden"><img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&q=80&auto=format" alt="Brand identity design spread with logo, colors, and typography" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+            <div class="p-5">
+              <div class="text-brand-primary mb-3"><i data-lucide="pen-tool" class="w-5 h-5"></i></div>
+              <h3 class="font-body text-base font-bold mb-1 group-hover:text-brand-primary transition-colors">Branding & Messaging</h3>
+              <p class="font-body text-sm text-text-secondary leading-[1.6]">Say what you mean, and say it in a way that sticks.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: HOW TO GET STARTED -->
+    <!-- ============================================================ -->
+    <section class="bg-background-primary py-20 px-6 ds-reveal">
+      <div class="max-w-container mx-auto">
+        <div class="text-center mb-12">
+          <p class="eyebrow text-[10px] font-body font-bold tracking-[0.12em] uppercase text-text-secondary mb-4">The Process</p>
+          <h2 class="font-body text-3xl md:text-4xl font-bold text-text-primary mb-4">How to get <span class="font-heading italic text-brand-primary">started.</span></h2>
+          <p class="font-body text-lg text-text-secondary">Working with us is simpler than you think.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[960px] mx-auto stagger-grid">
+          <div class="text-center">
+            <div class="w-14 h-14 rounded-full bg-brand-secondary-light flex items-center justify-center mx-auto mb-5"><span class="font-heading italic text-xl text-brand-secondary-dark">1</span></div>
+            <h3 class="font-body text-lg font-bold mb-2">Start with a Call</h3>
+            <p class="font-body text-sm text-text-secondary leading-[1.6]">Tell us about your business, your goals, and where things feel stuck. We listen first. No sales pitch, just a real conversation.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-14 h-14 rounded-full bg-brand-secondary-light flex items-center justify-center mx-auto mb-5"><span class="font-heading italic text-xl text-brand-secondary-dark">2</span></div>
+            <h3 class="font-body text-lg font-bold mb-2">We Build Your System</h3>
+            <p class="font-body text-sm text-text-secondary leading-[1.6]">A clear, custom marketing plan with the assets and infrastructure to execute it. Built for your business, not borrowed from a template.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-14 h-14 rounded-full bg-brand-secondary-light flex items-center justify-center mx-auto mb-5"><span class="font-heading italic text-xl text-brand-secondary-dark">3</span></div>
+            <h3 class="font-body text-lg font-bold mb-2">We Grow Together</h3>
+            <p class="font-body text-sm text-text-secondary leading-[1.6]">We stay in it with you. We iterate, measure, and improve so growth compounds over time. This is a partnership, not a project.</p>
+          </div>
+        </div>
+        <div class="text-center mt-12">
+          <a href="./contact.html" class="bg-brand-primary hover:bg-brand-primary-dark text-white font-body font-semibold text-sm px-8 py-3.5 rounded-pill transition-all duration-200 hover:scale-[1.02] hover:shadow-card-hover inline-flex items-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4"></i> Book Your Discovery Call
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7: MEET THE TEAM -->
+    <!-- ============================================================ -->
+    <section class="bg-background-secondary py-20 px-6 ds-reveal">
+      <div class="max-w-container mx-auto">
+        <div class="text-center mb-12">
+          <p class="eyebrow text-[10px] font-body font-bold tracking-[0.12em] uppercase text-text-secondary mb-4">The Team</p>
+          <h2 class="font-body text-3xl md:text-4xl font-bold text-text-primary mb-4">Small team. Big <span class="font-heading italic text-brand-primary">impact.</span></h2>
+          <p class="font-body text-lg text-text-secondary max-w-prose mx-auto">Direct access to the people doing the work. No account managers, no&nbsp;middlemen.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[960px] mx-auto stagger-grid">
+          <div class="text-center">
+            <div class="w-full aspect-[3/4] rounded-lg overflow-hidden mb-4">
+              <img src="./assets/images/team/caleb-headshot.jpg" alt="Caleb Cody, Founder of Five One Nine Marketing" class="w-full h-full object-cover object-top">
+            </div>
+            <h3 class="font-body text-base font-semibold">Caleb Cody</h3>
+            <p class="font-body text-sm text-text-secondary mb-2">Founder</p>
+            <p class="font-body text-xs text-text-secondary">Strategy lead and client relationships. Builds the overarching vision for every engagement.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-full aspect-[3/4] rounded-lg overflow-hidden mb-4">
+              <img src="./assets/images/team/mollie-headshot.jpg" alt="Mollie Huebner, Operations Manager and Creative Director" class="w-full h-full object-cover object-top">
+            </div>
+            <h3 class="font-body text-base font-semibold">Mollie Huebner</h3>
+            <p class="font-body text-sm text-text-secondary mb-2">Operations &amp; Creative</p>
+            <p class="font-body text-xs text-text-secondary">The creative eye and quality control layer. If it goes out the door, Mollie approved it.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-full aspect-[3/4] rounded-lg overflow-hidden mb-4">
+              <img src="./assets/images/team/julio-headshot.jpg" alt="Julio Aleman, Lead Developer and AI Engineer" class="w-full h-full object-cover object-top">
+            </div>
+            <h3 class="font-body text-base font-semibold">Julio Aleman</h3>
+            <p class="font-body text-sm text-text-secondary mb-2">Dev &amp; AI Engineering</p>
+            <p class="font-body text-xs text-text-secondary">Builds the technical infrastructure behind every system. If it works seamlessly, Julio built it.</p>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <a href="./team.html" class="font-body text-sm font-semibold text-brand-primary hover:text-brand-primary-dark transition-colors inline-flex items-center gap-2">Meet the Full Team <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 8: CASE STUDY HIGHLIGHTS -->
+    <!-- ============================================================ -->
+    <section id="case-studies" class="bg-background-primary py-20 px-6 ds-reveal">
+      <div class="max-w-container mx-auto">
+        <div class="text-center mb-12">
+          <p class="eyebrow text-[10px] font-body font-bold tracking-[0.12em] uppercase text-text-secondary mb-4">Results</p>
+          <h2 class="font-body text-3xl md:text-4xl font-bold text-text-primary">Proof, not <span class="font-heading italic text-brand-primary">promises.</span></h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 stagger-grid">
+          <a href="./case-studies.html" class="group cursor-pointer">
+            <div class="rounded-card overflow-hidden mb-4 aspect-video bg-background-secondary border border-border-primary p-3">
+              <div class="w-full h-full rounded-lg overflow-hidden bg-background-primary shadow-sm flex flex-col">
+                <div class="h-3 bg-border-primary flex items-center px-2 gap-1"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary/40"></span><span class="w-1.5 h-1.5 rounded-full bg-brand-secondary/40"></span><span class="w-1.5 h-1.5 rounded-full bg-text-secondary/20"></span></div>
+                <div class="flex-1 p-3"><div class="h-2 w-1/3 bg-brand-secondary/20 rounded mb-2"></div><div class="h-4 w-3/4 bg-text-primary/10 rounded mb-2"></div><div class="h-2 w-full bg-text-secondary/10 rounded mb-1"></div><div class="h-2 w-2/3 bg-text-secondary/10 rounded mb-3"></div><div class="flex gap-2"><div class="h-5 w-20 bg-brand-primary/20 rounded-pill"></div><div class="h-5 w-16 bg-brand-secondary/20 rounded-pill"></div></div></div>
+              </div>
+            </div>
+            <div class="flex gap-2 mb-2">
+              <span class="font-body text-[10px] font-bold tracking-[0.08em] uppercase text-brand-secondary bg-brand-secondary-light px-2 py-0.5 rounded-pill">Home Services</span>
+              <span class="font-body text-[10px] font-bold tracking-[0.08em] uppercase text-text-secondary bg-background-secondary px-2 py-0.5 rounded-pill">Google Ads</span>
+            </div>
+            <h3 class="font-body text-[15px] font-semibold text-text-primary group-hover:text-brand-primary transition-colors inline-flex items-center gap-1">North Georgia Design Build <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity"></i></h3>
+            <p class="font-body text-sm text-text-secondary mt-1">247% increase in qualified leads</p>
+          </a>
+          <a href="./case-studies.html" class="group cursor-pointer">
+            <div class="rounded-card overflow-hidden mb-4 aspect-video">
+              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&auto=format" alt="Medical spa treatment room with modern interior design" class="w-full h-full object-cover rounded-card group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="flex gap-2 mb-2">
+              <span class="font-body text-[10px] font-bold tracking-[0.08em] uppercase text-brand-secondary bg-brand-secondary-light px-2 py-0.5 rounded-pill">Medical Spa</span>
+              <span class="font-body text-[10px] font-bold tracking-[0.08em] uppercase text-text-secondary bg-background-secondary px-2 py-0.5 rounded-pill">Meta Ads</span>
+            </div>
+            <h3 class="font-body text-[15px] font-semibold text-text-primary group-hover:text-brand-primary transition-colors inline-flex items-center gap-1">Effect MedSpa <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity"></i></h3>
+            <p class="font-body text-sm text-text-secondary mt-1">3.2x return on ad spend in 90 days</p>
+          </a>
+          <a href="./case-studies.html" class="group cursor-pointer">
+            <div class="rounded-card overflow-hidden mb-4 aspect-video">
+              <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80&auto=format" alt="Professional law office conference room representing legal services" class="w-full h-full object-cover rounded-card group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="flex gap-2 mb-2">
+              <span class="font-body text-[10px] font-bold tracking-[0.08em] uppercase text-brand-secondary bg-brand-secondary-light px-2 py-0.5 rounded-pill">Legal</span>
+              <span class="font-body text-[10px] font-bold tracking-[0.08em] uppercase text-text-secondary bg-background-secondary px-2 py-0.5 rounded-pill">Full Stack</span>
+            </div>
+            <h3 class="font-body text-[15px] font-semibold text-text-primary group-hover:text-brand-primary transition-colors inline-flex items-center gap-1">Smith Jufer Smith <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity"></i></h3>
+            <p class="font-body text-sm text-text-secondary mt-1">Full-funnel system launch</p>
+          </a>
+        </div>
+        <div class="text-center mt-10">
+          <a href="./case-studies.html" class="font-body text-sm font-semibold text-brand-primary hover:text-brand-primary-dark transition-colors inline-flex items-center gap-2">View All Case Studies <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 9: LOGO WALL -->
+    <!-- ============================================================ -->
+    <section class="bg-background-secondary py-16 px-6 ds-reveal">
+      <div class="max-w-container mx-auto">
+        <p class="text-center font-body text-[10px] font-bold tracking-[0.12em] uppercase text-text-secondary mb-8">Trusted by businesses across the Southeast</p>
+        <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 md:gap-12">
+          <span class="font-heading italic text-base md:text-lg text-text-secondary/40 hover:text-text-secondary transition-colors">North Georgia Design Build</span>
+          <span class="font-heading italic text-base md:text-lg text-text-secondary/40 hover:text-text-secondary transition-colors">Effect MedSpa</span>
+          <span class="font-heading italic text-base md:text-lg text-text-secondary/40 hover:text-text-secondary transition-colors">Smith Jufer Smith</span>
+          <span class="font-heading italic text-base md:text-lg text-text-secondary/40 hover:text-text-secondary transition-colors">Beautiful Blooms</span>
+          <span class="font-heading italic text-base md:text-lg text-text-secondary/40 hover:text-text-secondary transition-colors">ThermoKing Jax</span>
+          <span class="font-heading italic text-base md:text-lg text-text-secondary/40 hover:text-text-secondary transition-colors">Modern Concepts</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 10: TESTIMONIALS -->
+    <!-- ============================================================ -->
+    <section class="py-20 px-6 ds-reveal" style="background:#F2F2F2">
+      <div class="max-w-container mx-auto">
+        <div class="text-center mb-12">
+          <p class="eyebrow text-[10px] font-body font-bold tracking-[0.12em] uppercase text-text-secondary mb-4">Testimonials</p>
+          <h2 class="font-body text-3xl md:text-4xl font-bold text-text-primary">What our partners <span class="font-heading italic text-brand-primary">say.</span></h2>
+        </div>
+        <div class="max-w-[700px] mx-auto text-center">
+          <i data-lucide="quote" class="w-10 h-10 text-brand-secondary mb-6 mx-auto"></i>
+          <p class="font-heading italic text-xl leading-[1.6] text-text-primary mb-8">
+            "Five One Nine didn't just run our ads. They built a system that keeps generating leads months after the initial campaign ended. The ROI has been&nbsp;unreal."
+          </p>
+          <div class="flex items-center justify-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-secondary flex items-center justify-center"><span class="font-body text-sm font-semibold text-white">JR</span></div>
+            <div class="text-left">
+              <p class="font-body text-sm font-semibold text-text-primary">Josh Reynolds</p>
+              <p class="font-body text-xs text-text-secondary">Owner, North Georgia Design Build</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 11: FINAL CTA -->
+    <!-- ============================================================ -->
+    <section class="bg-background-primary py-20 px-6 ds-reveal">
+      <div class="max-w-container mx-auto">
+        <div class="grain-overlay rounded-panel overflow-hidden" style="background:linear-gradient(145deg, #2E3C41, #364449)">
+          <div class="py-16 md:py-20 px-8 md:px-16 text-center relative z-10">
+            <h2 class="font-body text-3xl md:text-4xl font-bold text-white leading-[1.15] mb-4">
+              Stop guessing.<br>Start <span class="font-heading italic text-brand-primary" data-annotate="underline" data-annotate-color="#F57F5B">growing.</span>
+            </h2>
+            <p class="font-body text-lg text-white/70 mb-4">Two ways to take the next step. Pick the one that fits.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[640px] mx-auto mt-8">
+              <div class="bg-white/10 backdrop-blur-sm rounded-card p-6 text-center">
+                <h3 class="font-body text-base font-bold text-white mb-2">Ready to talk?</h3>
+                <p class="font-body text-sm text-white/70 mb-4">30 minutes. No obligation. We'll talk about your business and whether we're a good fit.</p>
+                <a href="./contact.html" class="bg-brand-primary hover:bg-brand-primary-dark text-white font-body font-semibold text-sm px-6 py-3 rounded-pill transition-all duration-200 hover:scale-[1.02] inline-flex items-center gap-2 w-full justify-center">
+                  <i data-lucide="calendar" class="w-4 h-4"></i> Book a Discovery Call
+                </a>
+              </div>
+              <div class="bg-white/10 backdrop-blur-sm rounded-card p-6 text-center">
+                <h3 class="font-body text-base font-bold text-white mb-2">Not ready for a call?</h3>
+                <p class="font-body text-sm text-white/70 mb-4">Take our 2-minute quiz to find out what's working and what's not in your marketing.</p>
+                <a href="./assessment.html" class="bg-white/20 hover:bg-white/30 text-white font-body font-semibold text-sm px-6 py-3 rounded-pill transition-all duration-200 inline-flex items-center gap-2 w-full justify-center">
+                  <i data-lucide="clipboard-check" class="w-4 h-4"></i> Take the Marketing Quiz
+                </a>
+              </div>
+            </div>
+            <p class="font-body text-sm text-white/50 mt-6">No pressure. No pitch. Just&nbsp;clarity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================ -->
+  <!-- SECTION 12: FOOTER -->
+  <!-- ============================================================ -->
+  <footer class="bg-background-alternative py-16 px-6">
+    <div class="max-w-container mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8">
+        <!-- Brand -->
+        <div class="sm:col-span-2 lg:col-span-1">
+          <img src="./assets/images/fon-logo-full-dark.png" alt="Five One Nine Digital Marketing" class="h-14 logo-light mb-4">
+          <p class="font-body text-sm text-text-alternative/60 leading-[1.6] mb-6">Strategy-first digital marketing for growth-focused businesses. We build systems that&nbsp;compound.</p>
+          <div class="flex gap-3">
+            <a href="#" class="social-icon w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors text-text-alternative" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="#" class="social-icon w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors text-text-alternative" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="#" class="social-icon w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors text-text-alternative" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          </div>
+        </div>
+        <!-- Services -->
+        <div>
+          <p class="font-body text-[11px] font-bold tracking-[0.12em] uppercase text-text-alternative mb-4">Services</p>
+          <ul class="space-y-2">
+            <li><a href="./services/marketing-strategy.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">Marketing Strategy</a></li>
+            <li><a href="./services/paid-advertising.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">Paid Advertising</a></li>
+            <li><a href="./services/web-design.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">Web Design</a></li>
+            <li><a href="./services/seo.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">SEO</a></li>
+            <li><a href="./services/social-media.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">Social Media</a></li>
+            <li><a href="./services/lead-systems.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">Lead Systems &amp; CRM</a></li>
+            <li><a href="./services/branding.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">Branding</a></li>
+          </ul>
+        </div>
+        <!-- Company -->
+        <div>
+          <p class="font-body text-[11px] font-bold tracking-[0.12em] uppercase text-text-alternative mb-4">Company</p>
+          <ul class="space-y-2">
+            <li><a href="./about.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">About</a></li>
+            <li><a href="./team.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">Our Team</a></li>
+            <li><a href="./case-studies.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">Case Studies</a></li>
+            <li><a href="./resources.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">Resources</a></li>
+            <li><a href="./contact.html" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div>
+          <p class="font-body text-[11px] font-bold tracking-[0.12em] uppercase text-text-alternative mb-4">Contact</p>
+          <ul class="space-y-3">
+            <li><a href="tel:+15551234567" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5"></i> (555) 123-4567</a></li>
+            <li><a href="mailto:hello@fonmarketing.com" class="font-body text-sm text-text-alternative/60 hover:text-text-alternative transition-colors flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5"></i> hello@fonmarketing.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body text-[12px] text-text-alternative/40">&copy; 2026 Five One Nine Marketing. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="./privacy.html" class="font-body text-[12px] text-text-alternative/40 hover:text-text-alternative transition-colors">Privacy Policy</a>
+          <a href="./terms.html" class="font-body text-[12px] text-text-alternative/40 hover:text-text-alternative transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Five One Nine Marketing",
+    "alternateName": "FON Marketing",
+    "description": "Strategy-first digital marketing agency. Paid advertising, SEO, web design, social media, CRM automation, and branding for growth-focused businesses.",
+    "url": "https://fonmarketing.com",
+    "telephone": "+15551234567",
+    "email": "hello@fonmarketing.com",
+    "founder": { "@type": "Person", "name": "Caleb Cody" },
+    "numberOfEmployees": { "@type": "QuantitativeValue", "value": 3 },
+    "areaServed": "Southeast United States",
+    "serviceType": ["Digital Marketing", "Google Ads", "Meta Ads", "SEO", "Web Design", "Social Media Management", "CRM Automation", "Branding"]
+  }
+  </script>
+
+  <!-- Shared Scripts -->
+  <script src="./assets/scripts.js"></script>
+
+</body>
+</html>
