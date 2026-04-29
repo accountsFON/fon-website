@@ -232,19 +232,38 @@ if (document.querySelector('.hero-word')) {
   });
 }
 
-// ─── Navbar scroll effect ───
+// ─── Navbar scroll effect (native listener - Safari compatible) ───
 const navbar = document.getElementById('navbar');
 if (navbar) {
-  ScrollTrigger.create({
-    start: 'top -50',
-    onUpdate: (self) => {
-      if (self.scroll() > 50) {
-        navbar.classList.add('nav-scrolled');
-      } else {
-        navbar.classList.remove('nav-scrolled');
-      }
+  let lastScrollY = 0;
+  let ticking = false;
+  function updateNavbar() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('nav-scrolled');
+    } else {
+      navbar.classList.remove('nav-scrolled');
     }
-  });
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updateNavbar); ticking = true; }
+  }, { passive: true });
+  updateNavbar();
+}
+
+// ─── Scroll Progress Bar (native listener - Safari compatible) ───
+const scrollProgress = document.getElementById('scroll-progress');
+if (scrollProgress) {
+  let progTicking = false;
+  function updateProgress() {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    scrollProgress.style.width = h > 0 ? Math.min((window.scrollY / h) * 100, 100) + '%' : '0%';
+    progTicking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!progTicking) { requestAnimationFrame(updateProgress); progTicking = true; }
+  }, { passive: true });
+  updateProgress();
 }
 
 // Final refresh after everything is set up
